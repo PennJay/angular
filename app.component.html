@@ -1,0 +1,5 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- 在输入框的组件里将todolist数组传到父组件中，在通过父组件传到列表组件中完成稿todolist -->
+<app-input (event)="getData($event)"></app-input>
+
+<app-list [todolist]="data"></app-list>
