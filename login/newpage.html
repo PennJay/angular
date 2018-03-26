@@ -1,0 +1,29 @@
+<ion-list>
+          <ion-item>
+            <ion-label color="primary">登录名：</ion-label>
+            <ion-input type="text"  [(ngModel)]="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="primary" fixed>密码：</ion-label>
+            <ion-input  type="password"[(ngModel)]="password"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            
+          </ion-item>
+
+          <ion-item>
+              <ion-col> <button ion-button round >注册</button></ion-col>
+              
+          </ion-item>
+
+          <ion-item>
+              <ion-col> <button ion-button round (click)="login()">登录</button></ion-col>
+          </ion-item>
+
+          <ion-item>
+          
+          </ion-item>
+
+</ion-list>
