@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-navbar color="yel">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <img class="logo" src="assets/imgs/logo.png">
+    <ion-buttons end>
+      <button ion-button icon-only style="width:48px;">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+</ion-header>
+
+
+
+<ion-content>
+
+    <ion-slides class="slide" loop="true">
+      <ion-slide>
+        <img src="assets/imgs/slide1.png">
+      </ion-slide>
+      <ion-slide>
+          <img src="assets/imgs/slide2.png">
+      </ion-slide>
+    </ion-slides>
+
+    <ion-segment [(ngModel)]="search"color="yel">
+      <ion-segment-button value="infor">找信息</ion-segment-button>
+      <ion-segment-button value="service">
+        找服务
+      </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="search" >
+      <ion-slides>
+        <ion-slide>
+          <div *ngSwitchCase="'infor'" (click)="goSub()">
+              <ion-grid>
+                <ion-row>
+                  <ion-col *ngFor="let item of infor.slice(0,4)" class="infor">
+                    <img [src]="item.icon">
+                    <p>{{ item.title }}</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col *ngFor="let item of infor.slice(4,8)" class="infor">
+                      <img [src]="item.icon">
+                      <p>{{ item.title }}</p>
+                    </ion-col>
+                </ion-row>
+              </ion-grid>  
+          </div>
+        </ion-slide>
+        <ion-slide>
+            <div *ngSwitchCase="'infor'" (click)="goSub()">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col *ngFor="let item of infor.slice(0,4)" class="infor">
+                      <img [src]="item.icon">
+                      <p>{{ item.title }}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>  
+            </div>
+        </ion-slide>
+      </ion-slides>
+      <ion-slides>
+        <ion-slide>
+        <div *ngSwitchCase="'service'" (click)="goService()">
+            <ion-grid>
+              <ion-row>
+                <ion-col *ngFor="let item of infor.slice(4,8)" class="service">
+                  <img [src]="item.icon">
+                  <p>{{ item.title }}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col *ngFor="let item of infor.slice(0,4)" class="service">
+                  <img [src]="item.icon">
+                  <p>{{ item.title }}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid> 
+          </div>
+        </ion-slide>
+        <ion-slide>
+            <div *ngSwitchCase="'service'" (click)="goService()">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col *ngFor="let item of infor.slice(4,8)" class="service">
+                      <img [src]="item.icon">
+                      <p>{{ item.title }}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid> 
+              </div>
+            </ion-slide>
+        </ion-slides>  
+    </div>
+    <div class="youzhixinxi"><p><ion-icon name="star" color="yel"></ion-icon>优质信息</p></div>
+
+    <ion-list>
+      <div *ngFor="let item of servicelist" (click)="goSub()">
+          <ion-list-header class="title-number">{{ item.title }} -- {{ item.number }}</ion-list-header>
+          <ion-item >
+            <div class="list-icon">
+              <ion-avatar item-start>
+                <img [src]="item.icon">
+              </ion-avatar>
+            </div>
+            <div class="list-content-left">
+                <span class="list-word">地区：</span><span>{{ item.area }}</span><br>
+                <span class="list-word">来源：</span><span>{{ item.source }}</span><br>
+                <span class="list-word">类型：</span><span>{{ item.type }}</span>
+              </div>
+              <div class="list-content-middle">
+                <span class="big-word">{{ item.accont }}</span><br>
+                <span class="list-word">总金额</span>
+              </div>
+              <div class="list-content-right">
+                <span class="big-word">{{ item.exchange }}</span><br>
+                <span class="list-word">转让价</span>
+              </div>
+              <ion-icon name="arrow-forward" item-end class="end"></ion-icon>
+          </ion-item>
+          
+      </div>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <p>{{dixian}}</p>
+
+    
+</ion-content>
